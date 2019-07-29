@@ -1,0 +1,28 @@
+@font-face {
+    font-family: "Open Sans Regular";
+    src: url("http://localhost/codex/assets/fonts/OpenSans-Regular.ttf");
+}
+@font-face {
+    font-family: "Open Sans Bold";
+    src: url("http://localhost/codex/assets/fonts/OpenSans-Bold.ttf");
+}
+body {
+    font-family: "Open Sans Regular";
+}
+.btn {
+    font-family: "Open Sans Bold";
+    border:none !important;
+}
+.font-bold {
+    font-family: "Open Sans Bold";
+}
+label {
+    font-size: 11px;
+    font-family: "Open Sans Bold";
+}
+h1,h2,h3,h4,h5 {
+    font-family: "Open Sans Bold";
+}
+.bg-gradient-green {
+    background: linear-gradient(0deg,#80ff9d 35%,#dbffe3 100%);
+}
