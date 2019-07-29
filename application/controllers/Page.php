@@ -20,6 +20,12 @@ class Page extends CI_Controller{
           echo "Access Denied";
       }
   }
+  
+  function json(){
+    $data['pasien'] = $this->p_data->SelectAll()->result_array();
+    echo json_encode($data);
+  }
+
   function pasien(){
     if($this->session->userdata('level')==='1'){
       $this->load->view('layouts/header');
@@ -31,18 +37,18 @@ class Page extends CI_Controller{
       echo "Access Denied";
   }
   }
-  function json(){
-    if($this->session->userdata('level')==='1'){
-      header("Content-Type: application/json");
-      $this->db->select('*');
-      $this->db->from('tbl_users');
-      $query = $this->db->get();
-  
-      return json_encode($query->result());
-  }else{
-    echo "Access Denied";
-}
-}
+  function get_autocomplete(){
+      if (isset($_GET['term'])) {
+          $result = $this->p_data->search_pasien($_GET['term']);
+          if (count($result) > 0) {
+          foreach ($result as $row)
+              $arr_result[] = $row->pasien_nama;
+              echo json_encode($arr_result);
+          }else{
+            echo "Data Tidak Ada";
+          }
+      }
+  }
 function edit($id){
   if($this->session->userdata('level')==='1'){
   $where = array('pasien_id' => $id);
@@ -81,22 +87,31 @@ function update(){
 }
 }
   function tambah_pasien(){
-    if($this->session->userdata('level')==='1'){
-    $nama = $this->input->post('pasien_nama');
-		$alamat = $this->input->post('pasien_alamat');
-		$kelamin = $this->input->post('pasien_kelamin');
-		$ktp = $this->input->post('pasien_ktp');
-		$data = array(
-			'pasien_nama' => $nama,
-			'pasien_alamat' => $alamat,
-			'pasien_kelamin' => $kelamin,
-			'pasien_ktp' => $ktp
-			);
-		$this->p_data->input_data($data,'tbl_pasiens');
-    redirect('page/pasien');
+      $koda = $this->input->post('pasien_nama');
+     if($this->session->userdata('level')==='1'){
+      $sql = $this->db->query("SELECT * FROM tbl_pasiens WHERE pasien_nama='$koda'");
+      $count = $sql->num_rows();
+      if ($count > 0) {
+        echo "sudah ada";
       }else{
-        echo "Access Denied";
-    }
+        $nama = $this->input->post('pasien_nama');
+        $alamat = $this->input->post('pasien_alamat');
+        $kelamin = $this->input->post('pasien_kelamin');
+        $ktp = $this->input->post('pasien_ktp');
+        $data = array(
+          'pasien_nama' => $nama,
+          'pasien_alamat' => $alamat,
+          'pasien_kelamin' => $kelamin,
+          'pasien_ktp' => $ktp
+          );
+        $this->p_data->input_data($data,'tbl_pasiens');
+        redirect('page/pasien');
+      }
+
+        }else{
+          echo "Access Denied";
+      }
+    
   }
  
   function dokter(){

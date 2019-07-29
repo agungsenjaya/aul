@@ -1,16 +1,17 @@
 @font-face {
     font-family: "Open Sans Regular";
-    src: url("http://localhost/codex/assets/fonts/OpenSans-Regular.ttf");
+    src: url("http://localhost/aul/assets/fonts/OpenSans-Regular.ttf");
 }
 @font-face {
     font-family: "Open Sans Bold";
-    src: url("http://localhost/codex/assets/fonts/OpenSans-Bold.ttf");
+    src: url("http://localhost/aul/assets/fonts/OpenSans-Bold.ttf");
 }
 body {
     font-family: "Open Sans Regular";
 }
 .btn {
     font-family: "Open Sans Bold";
+    font-size: 12px;
     border:none !important;
 }
 .font-bold {

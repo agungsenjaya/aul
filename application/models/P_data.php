@@ -25,4 +25,17 @@ class P_data extends CI_Model{
 			$this->db->or_like('pasien_ktp',$keyword);
 			return $this->db->get()->result();
 	}
+	function search_pasien($ktp){
+        $this->db->like('pasien_ktp', $ktp , 'both');
+        $this->db->order_by('pasien_ktp', 'ASC');
+        $this->db->limit(10);
+        return $this->db->get('tbl_pasiens')->result();
+    }
+    function SelectAll()
+	{
+	   $this->db->select('*');
+   $this->db->from('tbl_pasiens');
+   $query = $this->db->get();
+   return $query;
+	}
 }

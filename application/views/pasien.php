@@ -13,16 +13,18 @@
           <a href="javascript:void(0)" class="btn btn-block btn-success text-uppercase mb-3" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-user-circle mr-1"></i>Tambah Pasien</a>
         </div>
         <div class="col-md">
+          <form>
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Cari Pasien" aria-label="Username" aria-describedby="basic-addon1">
+            <input type="text" class="form-control" placeholder="Cari Pasien" aria-label="Username" aria-describedby="basic-addon1" id="title">
             <div class="input-group-append">
               <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="fa fa-search"></i></span>
             </div>
           </div>
+          </form>
 
         </div>
       </div>
-            <table class="table table-bordered">
+            <!-- <table class="table table-bordered">
                 <thead class="thead-light">
                     <tr>
                         <th>#</th>
@@ -52,6 +54,17 @@
                   </tr>
                   <?php }?>
                 </tbody>
+            </table> -->
+            <table class="table" id="myTable">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Nama</th>
+                  <th>KTP</th>
+                  <th>Kelamin</th>
+                </tr>
+              </thead>
+              
             </table>
       </div>
     </main>
