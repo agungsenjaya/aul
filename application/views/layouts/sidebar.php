@@ -34,6 +34,12 @@
               Dashboard <span class="sr-only">(current)</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo base_url(); ?>page/dokter">
+              <i class="fa fa-users mr-1"></i>
+              Pegawai <span class="sr-only">(current)</span>
+            </a>
+          </li>
           
           <?php else:?>
           <?php endif;?>

@@ -41,8 +41,8 @@
                   foreach ($pasien as $data) {
                   ?>
                   <tr>
-                    <td><?php echo $no++; ?></td>
-                    <td class="text-capitalize"><?php echo $data->pasien_nama ?></td>
+                    <td class="bg-light"><?php echo $no++; ?></td>
+                    <td class="text-capitalize font-weight-bold"><?php echo $data->pasien_nama ?></td>
                     <td class="bg-light"><?php echo $data->pasien_ktp ?></td>
                     <td><?php 
                     if($data->pasien_kelamin == 'L'){
@@ -51,7 +51,7 @@
                       echo "Perempuan";
                     }
                      ?></td>
-                    <td>
+                    <td class="bg-light">
                       <?php if ($data->pasien_status == 1 ): ?>
                       <span class="badge badge-success">Active</span>
                       <?php elseif($data->pasien_status == 2): ?>
@@ -60,7 +60,7 @@
                       <span class="badge badge-dark">Deactive</span>
                       <?php endif ?>
                     </td>
-                    <td><a href="<?php echo base_url();?>page/edit/<?php echo $data->pasien_id ?>">Action</a></td>
+                    <td><a href="<?php echo base_url();?>page/edit/<?php echo $data->pasien_id ?>" class="btn btn-success">Action</a></td>
                   </tr>
                   <?php }?>
                 </tbody>

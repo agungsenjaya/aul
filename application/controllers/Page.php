@@ -42,12 +42,33 @@ class Page extends CI_Controller{
 
       $this->load->view('layouts/header');
       $this->load->view('layouts/sidebar');
-      $this->load->view('pasien_list');
+      $data['pasien'] = $this->p_data->list_data()->result();
+      $this->load->view('pasien_list', $data);
       $this->load->view('layouts/footer');
 
       }else{
       echo "Access Denied";
   }
+  }
+  function pasien_proses(){
+    if($this->session->userdata('level')==='1'){
+
+      $pasien_status = 2;
+    $id = $this->input->post('pasien_id');
+    $reg = date('Y-m-d H:i:s');
+    $data = array(
+      'pasien_status' => $pasien_status,
+      'pasien_reg' => $reg
+    );
+    $where = array(
+        'pasien_id' => $id
+      );
+    $this->p_data->update_proses($where,$data,'tbl_pasiens');
+    redirect('page/pasien');
+
+      }else{
+      echo "Access Denied";
+    }
   }
   function get_autocomplete(){
       if (isset($_GET['term'])) {
@@ -159,7 +180,7 @@ function update_pasien(){
   }
  
   function dokter(){
-    //Allowing akses to staff only
+    //Allowing akses to dokter only
     if($this->session->userdata('level')==='2'){
       $this->load->view('layouts/header');
       $this->load->view('layouts/sidebar');
@@ -188,9 +209,31 @@ function update_pasien(){
         echo "Access Denied";
       }
       }
- 
+
+      function tambah_diagnosa(){
+        if($this->session->userdata('level')==='2'){
+        $penyakit = $this->input->post('konsultan_judul');
+        $obat = $this->input->post('konsultan_obat');
+        $pasien_id = $this->input->post('pasien_id');
+        $reg = date('Y-m-d H:i:s');
+        $data = array(
+          'konsultan_judul' => $penyakit,
+          'konsultan_obat' => $obat,
+          'pasien_id' => $pasien_id,
+          'konsultan_tgl' => $reg,
+          );
+        $this->p_data->tambah_diagnosa($data,'tbl_konsultans');
+        $eml ="UPDATE tbl_pasiens SET pasien_status=3 WHERE pasien_id=".$pasien_id;
+        $this->db->query($eml);
+        redirect('page/dokter');
+
+        }else{
+          echo "Access Denied";
+        }
+      }
+
   function author(){
-    //Allowing akses to author only
+    //Allowing akses to anonym only
     if($this->session->userdata('level')==='3'){
       $this->load->view('dashboard');
     }else{

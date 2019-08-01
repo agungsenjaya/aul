@@ -34,7 +34,7 @@
       <div class="col-md">
         <?php foreach ($pasien as $keya) { ?>
         <?php if ($keya->pasien_status == 1): ?>
-          <button type="" disabled class="btn btn-success text-uppercase">panggil pasien</button>
+          <button type="" disabled class="btn btn-dark text-uppercase">panggil pasien</button>
           <?php else: ?>
             <form action="<?php echo base_url(). 'page/update_pasien'; ?>" method="post">
               <input type="hidden" name="pasien_id" value="<?php echo $keya->pasien_id ?>">

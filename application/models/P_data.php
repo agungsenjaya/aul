@@ -4,8 +4,20 @@ class P_data extends CI_Model{
 	function tampil_data(){
 		return $this->db->get('tbl_pasiens');
 	}
+	function list_data(){
+		$aq = date('Y-m-d');
+		$this->db->select('*');
+		$this->db->from('tbl_pasiens');
+		$this->db->where('pasien_status',1);
+		$this->db->or_where('pasien_status',2);
+		$this->db->like('pasien_reg',$aq);
+		return $this->db->get();
+	}
  
 	function input_data($data,$table){
+		$this->db->insert($table,$data);
+	}
+	function tambah_diagnosa($data,$table){
 		$this->db->insert($table,$data);
 	}
 	function edit_data($where, $table){
@@ -19,6 +31,10 @@ class P_data extends CI_Model{
 		$this->db->update($table,$data);
 	}
 	function update_status($where,$data,$table){
+		$this->db->where($where);
+		$this->db->update($table,$data);
+	}
+	function update_proses($where,$data,$table){
 		$this->db->where($where);
 		$this->db->update($table,$data);
 	}	
