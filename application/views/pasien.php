@@ -15,7 +15,7 @@
         <div class="col-md">
           <form>
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Cari Pasien" aria-label="Username" aria-describedby="basic-addon1" id="title">
+            <input type="text" class="form-control typeahead" placeholder="Cari Pasien" aria-label="Username" aria-describedby="basic-addon1" id="title">
             <div class="input-group-append">
               <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="fa fa-search"></i></span>
             </div>
@@ -24,13 +24,14 @@
 
         </div>
       </div>
-            <!-- <table class="table table-bordered">
+            <table class="table table-bordered">
                 <thead class="thead-light">
                     <tr>
                         <th>#</th>
                         <th>Nama</th>
                         <th>Nomor Ktp</th>
                         <th>Kelamin</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -50,21 +51,19 @@
                       echo "Perempuan";
                     }
                      ?></td>
+                    <td>
+                      <?php if ($data->pasien_status == 1 ): ?>
+                      <span class="badge badge-success">Active</span>
+                      <?php elseif($data->pasien_status == 2): ?>
+                      <span class="badge badge-warning">Prosess</span>
+                      <?php else: ?>
+                      <span class="badge badge-dark">Deactive</span>
+                      <?php endif ?>
+                    </td>
                     <td><a href="<?php echo base_url();?>page/edit/<?php echo $data->pasien_id ?>">Action</a></td>
                   </tr>
                   <?php }?>
                 </tbody>
-            </table> -->
-            <table class="table" id="myTable">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Nama</th>
-                  <th>KTP</th>
-                  <th>Kelamin</th>
-                </tr>
-              </thead>
-              
             </table>
       </div>
     </main>
@@ -80,32 +79,30 @@
       </div>
       <div class="modal-body">
       <form action="<?php echo base_url(). 'page/tambah_pasien'; ?>" method="post">
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputNama">Nama Lengkap</label>
-      <input required type="text" name="pasien_nama" class="form-control" id="inputNama" placeholder="Masukan Nama">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputKtp">Nomor KTP</label>
-      <input required type="text" class="form-control" name="pasien_ktp" id="inputKtp" placeholder="Masukan Nomor">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="inputKelamin">Jenis Kelamin</label>
-    <select required name="pasien_kelamin" id="" class="form-control">
-      <option value="">Pilih Kelamin</option>
-      <option value="L">Laki - Laki</option>
-      <option value="P">Perempuan</option>
-    </select>
-    
-  </div>
-  <div class="form-group">
-    <label for="inputAddress">Alamat</label>
-    <textarea required name="pasien_alamat" class="form-control" id="inputAddress" placeholder="Masukan Alamat"></textarea>
-  </div>
-  
-  <button type="submit" class="btn btn-success text-uppercase btn-lg">Insert Pasien</button>
-</form>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputNama">Nama Lengkap</label>
+              <input required type="text" name="pasien_nama" class="form-control" id="inputNama" placeholder="Masukan Nama">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputKtp">Nomor KTP</label>
+              <input required type="text" class="form-control" name="pasien_ktp" id="inputKtp" placeholder="Masukan Nomor">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputKelamin">Jenis Kelamin</label>
+            <select required name="pasien_kelamin" id="" class="form-control">
+              <option value="">Pilih Kelamin</option>
+              <option value="L">Laki - Laki</option>
+              <option value="P">Perempuan</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress">Alamat</label>
+            <textarea required name="pasien_alamat" class="form-control" id="inputAddress" placeholder="Masukan Alamat"></textarea>
+          </div>
+          <button type="submit" class="btn btn-success text-uppercase btn-lg">Insert Pasien</button>
+        </form>
       </div>
     </div>
   </div>

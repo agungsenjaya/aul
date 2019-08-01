@@ -22,7 +22,7 @@
             </a>
           </li>
           <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="<?php echo base_url(); ?>page/pasien_list">
               <i class="fa fa-list mr-1"></i>
               List Panggilan
             </a>

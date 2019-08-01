@@ -10,16 +10,39 @@
         </nav>
       </div>
       <!-- Content -->
+      <div class="row">
       <div class="col-md-4">
         <div class="media border border-success p-4">
           <i class="fa fa-user-circle fa-4x mr-2 text-success"></i>
           <div class="media-body">
             <?php foreach ($pasien as $keya) { ?>
             <h5 class="text-capitalize mb-0"><?php echo $keya->pasien_nama ?></h5>
-            <p><?php echo $keya->pasien_ktp ?></p>
+            <p class="mb-0"><?php echo $keya->pasien_ktp ?></p>
+            <?php if ($keya->pasien_status == 1): ?>
+              <div class="badge badge-success">
+                Active
+              </div>
+              <?php else: ?>
+              <div class="badge badge-dark">
+                Deactive
+              </div>
+            <?php endif ?>
           <?php } ?>
           </div>
         </div>
+      </div>
+      <div class="col-md">
+        <?php foreach ($pasien as $keya) { ?>
+        <?php if ($keya->pasien_status == 1): ?>
+          <button type="" disabled class="btn btn-success text-uppercase">panggil pasien</button>
+          <?php else: ?>
+            <form action="<?php echo base_url(). 'page/update_pasien'; ?>" method="post">
+              <input type="hidden" name="pasien_id" value="<?php echo $keya->pasien_id ?>">
+            <button type="submit" title="" class="btn btn-success text-uppercase">Panggil pasien</button>
+          </form>
+        <?php endif ?>
+        <?php } ?>
+      </div>
       </div>
       <!-- End Content -->
       <!-- Editing -->

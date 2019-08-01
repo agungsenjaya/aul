@@ -37,6 +37,18 @@ class Page extends CI_Controller{
       echo "Access Denied";
   }
   }
+  function pasien_list(){
+    if($this->session->userdata('level')==='1'){
+
+      $this->load->view('layouts/header');
+      $this->load->view('layouts/sidebar');
+      $this->load->view('pasien_list');
+      $this->load->view('layouts/footer');
+
+      }else{
+      echo "Access Denied";
+  }
+  }
   function get_autocomplete(){
       if (isset($_GET['term'])) {
           $result = $this->p_data->search_pasien($_GET['term']);
@@ -48,6 +60,17 @@ class Page extends CI_Controller{
             echo "Data Tidak Ada";
           }
       }
+  }
+  function pro(){
+            $query = $this->input->get('query');
+
+        $this->db->like('pasien_nama', $query);
+
+
+        $data = $this->db->get("tbl_pasiens")->result();
+
+
+        echo json_encode( $data);
   }
 function edit($id){
   if($this->session->userdata('level')==='1'){
@@ -86,10 +109,29 @@ function update(){
     echo "Access Denied";
 }
 }
+function update_pasien(){
+  if($this->session->userdata('level')==='1'){
+    $pasien_status = 1;
+    $id = $this->input->post('pasien_id');
+    $reg = date('Y-m-d H:i:s');
+    $data = array(
+      'pasien_status' => $pasien_status,
+      'pasien_reg' => $reg
+    );
+    $where = array(
+        'pasien_id' => $id
+      );
+    $this->p_data->update_status($where,$data,'tbl_pasiens');
+    redirect('page/pasien');
+      }else{
+    echo "Access Denied";
+}
+
+}
   function tambah_pasien(){
-      $koda = $this->input->post('pasien_nama');
+      $koda = $this->input->post('pasien_ktp');
      if($this->session->userdata('level')==='1'){
-      $sql = $this->db->query("SELECT * FROM tbl_pasiens WHERE pasien_nama='$koda'");
+      $sql = $this->db->query("SELECT * FROM tbl_pasiens WHERE pasien_ktp='$koda'");
       $count = $sql->num_rows();
       if ($count > 0) {
         echo "sudah ada";
@@ -97,12 +139,14 @@ function update(){
         $nama = $this->input->post('pasien_nama');
         $alamat = $this->input->post('pasien_alamat');
         $kelamin = $this->input->post('pasien_kelamin');
+        $reg = date('Y-m-d H:i:s');
         $ktp = $this->input->post('pasien_ktp');
         $data = array(
           'pasien_nama' => $nama,
           'pasien_alamat' => $alamat,
           'pasien_kelamin' => $kelamin,
-          'pasien_ktp' => $ktp
+          'pasien_ktp' => $ktp,
+          'pasien_reg' => $reg
           );
         $this->p_data->input_data($data,'tbl_pasiens');
         redirect('page/pasien');
