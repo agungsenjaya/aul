@@ -79,7 +79,6 @@
   
   <button type="submit" class="btn btn-success text-uppercase ">Update Pasien</button>
 </form>
-<?php } ?>
     </div>
       <!-- End Editing -->
       <!-- Record -->
@@ -87,7 +86,7 @@
         <h1 class="h5">Record Pasien</h1>
         <hr>
         <table class="table table-bordered">
-          <thead>
+          <thead class="thead-light">
             <tr>
               <th>Tanggal</th>
               <th>Penyakit</th>
@@ -95,13 +94,19 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>data</td>
-              <td>data</td>
-              <td>data</td>
+            <?php 
+            $in = "SELECT * FROM tbl_konsultans WHERE pasien_id=$key->pasien_id";
+            $qr = $this->db->query($in);
+            foreach ($qr->result() as $kuy): ?>
+            <tr class="text-capitalize">
+              <td class="font-weight-bold"><?php echo $kuy->konsultan_tgl ?></td>
+              <td class="bg-light"><?php echo $kuy->konsultan_judul ?></td>
+              <td><?php echo $kuy->konsultan_obat ?></td>
             </tr>
+            <?php endforeach ?>
           </tbody>
         </table>
       </div>
+<?php } ?>
       <!-- End Record -->
 </main>

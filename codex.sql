@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 01 Agu 2019 pada 10.40
+-- Waktu pembuatan: 02 Agu 2019 pada 06.21
 -- Versi server: 5.7.19
 -- Versi PHP: 7.1.14
 
@@ -33,8 +33,17 @@ CREATE TABLE `tbl_konsultans` (
   `konsultan_judul` varchar(200) NOT NULL,
   `konsultan_obat` varchar(200) NOT NULL,
   `konsultan_tgl` varchar(200) NOT NULL,
-  `user_id` int(100) NOT NULL
+  `pasien_id` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_konsultans`
+--
+
+INSERT INTO `tbl_konsultans` (`konsultan_id`, `konsultan_judul`, `konsultan_obat`, `konsultan_tgl`, `pasien_id`) VALUES
+(1, 'jarang makan', 'harus banyak makan ya', '2019-08-02 08:32:54', 2),
+(2, 'banyak pikirian', 'perbanyak suami', '2019-08-02 10:55:01', 1),
+(3, 'masih bandel', 'obatnya banyak bersyukur', '2019-08-01 13:03:21', 2);
 
 -- --------------------------------------------------------
 
@@ -57,9 +66,10 @@ CREATE TABLE `tbl_pasiens` (
 --
 
 INSERT INTO `tbl_pasiens` (`pasien_id`, `pasien_nama`, `pasien_alamat`, `pasien_kelamin`, `pasien_ktp`, `pasien_status`, `pasien_reg`) VALUES
-(1, 'dini margaretha', 'kembang kuta bali', 'P', '12345', 1, '2019-08-01 11:23:48'),
-(2, 'Romi Rafela', 'tubagus ismail raya dan sekitarnya', 'L', '4321', 1, '2019-08-01 17:21:45'),
-(3, 'dadang kornelo', 'jl raya sindang paray', 'P', '32023020202020', 0, '2019-08-01 17:22:40');
+(1, 'dini margaretha', 'kembang kuta bali', 'P', '12345', 0, '2019-08-02 11:18:27'),
+(2, 'Romi Rafela', 'tubagus ismail raya dan sekitarnya', 'L', '4321', 0, '2019-08-02 13:10:50'),
+(3, 'dadang kornelo', 'jl raya sindang paray', 'P', '32023020202020', 0, '2019-08-01 17:22:40'),
+(4, 'agus hari', 'jl dieng tengah', 'L', '777888', 1, '2019-08-02 08:33:33');
 
 -- --------------------------------------------------------
 
@@ -114,13 +124,13 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT untuk tabel `tbl_konsultans`
 --
 ALTER TABLE `tbl_konsultans`
-  MODIFY `konsultan_id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `konsultan_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_pasiens`
 --
 ALTER TABLE `tbl_pasiens`
-  MODIFY `pasien_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `pasien_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_users`

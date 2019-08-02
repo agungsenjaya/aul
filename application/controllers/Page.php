@@ -53,7 +53,7 @@ class Page extends CI_Controller{
   function pasien_proses(){
     if($this->session->userdata('level')==='1'){
 
-      $pasien_status = 2;
+    $pasien_status = 2;
     $id = $this->input->post('pasien_id');
     $reg = date('Y-m-d H:i:s');
     $data = array(
@@ -65,6 +65,26 @@ class Page extends CI_Controller{
       );
     $this->p_data->update_proses($where,$data,'tbl_pasiens');
     redirect('page/pasien');
+
+      }else{
+      echo "Access Denied";
+    }
+  }
+  function pasien_finish(){
+    if($this->session->userdata('level')==='1'){
+
+    $pasien_status = 0;
+    $id = $this->input->post('pasien_id');
+    $reg = date('Y-m-d H:i:s');
+    $data = array(
+      'pasien_status' => $pasien_status,
+      'pasien_reg' => $reg
+    );
+    $where = array(
+        'pasien_id' => $id
+      );
+    $this->p_data->update_finish($where,$data,'tbl_pasiens');
+    redirect('page/pasien_list');
 
       }else{
       echo "Access Denied";

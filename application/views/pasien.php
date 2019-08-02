@@ -9,19 +9,36 @@
         </nav>
       </div>
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4">
           <a href="javascript:void(0)" class="btn btn-block btn-success text-uppercase mb-3" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-user-circle mr-1"></i>Tambah Pasien</a>
         </div>
-        <div class="col-md">
-          <form>
-          <div class="input-group">
-            <input type="text" class="form-control typeahead" placeholder="Cari Pasien" aria-label="Username" aria-describedby="basic-addon1" id="title">
+        <div class="col-md-4">
+          <a href="javascript:void(0)" class="btn btn-success btn-block text-uppercase" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-search mr-1"></i>Cari Pasien</a>
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content bg-transparent border-0">
+      <!-- <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div> -->
+      <div class="modal-body">
+        <button type="button" class="close mb-3" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="input-group asearch">
+            <input type="text" id="search1" class="form-control form-control-lg rounded-0" placeholder="Cari nama pasien / ktp.." aria-label="Recipient's username" aria-describedby="basic-addon2">
             <div class="input-group-append">
-              <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="fa fa-search"></i></span>
+              <span class="input-group-text rounded-0" id="basic-addon2"><i class="fa fa-sort grs"></i></span>
             </div>
           </div>
-          </form>
-
+          <ul class="list-group" id="result"></ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
         </div>
       </div>
             <table class="table table-bordered">

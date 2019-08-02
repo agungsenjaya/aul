@@ -71,12 +71,12 @@
               <td class="bg-light"><?php echo $no++; ?></td>
               <td class="text-capitalize font-weight-bold"><?php echo $lp->pasien_nama; ?></td>
               <td class="bg-light"><?php echo $lp->pasien_ktp; ?></td>
-              <td><a href="javascript:void(0)" title="" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Details</a></td>
-              <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <td><a href="javascript:void(0)" title="" class="btn btn-success" data-toggle="modal" data-target="#md-<?php  echo $lp->pasien_id ?>">Details</a></td>
+              <div class="modal fade" id="md-<?php  echo $lp->pasien_id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title ml-auto" id="exampleModalCenterTitle">Diagnosa Pasien</h5>
+    <div class="modal-content border-0">
+      <div class="modal-header border-0">
+        <h5 class="modal-title ml-auto" id="exampleModalCenterTitle">Obat Pasien</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -84,13 +84,24 @@
       <div class="modal-body">
       <?php 
         $dd = date('Y-m-d');
-        $jkl = "SELECT * FROM tbl_konsultans WHERE pasien_id=$lp->pasien_id";
+        $jkl = "SELECT * FROM tbl_konsultans WHERE pasien_id=$lp->pasien_id AND konsultan_tgl LIKE '$dd%'  ";
         $fi = $this->db->query($jkl);
         if ($fi->num_rows() > 0) {
           foreach ($fi->result() as $kela) {
        ?>
+       <p class="font-weight-bold mb-0">Penyakit Pasien</p>
        <p><?php echo $kela->konsultan_judul ?></p>
+       <hr>
+       <p class="font-weight-bold mb-0">Obat Pasien</p>
        <p><?php echo $kela->konsultan_obat ?></p>
+
+        <div class="py-3 mx-auto">
+          <form action="<?php echo base_url(). 'page/pasien_finish'; ?>" method="post">
+            <input type="hidden" name="pasien_id" value="<?php echo $lp->pasien_id ?>">
+            <button type="submit" class="btn btn-success">Finish Pasien</button>
+          </form>
+        </div>
+
      <?php }} ?>
       </div>
     </div>

@@ -37,6 +37,10 @@ class P_data extends CI_Model{
 	function update_proses($where,$data,$table){
 		$this->db->where($where);
 		$this->db->update($table,$data);
+	}
+	function update_finish($where,$data,$table){
+		$this->db->where($where);
+		$this->db->update($table,$data);
 	}	
 	public function get_pasien_keyword($keyword){
 			$this->db->select('*');

@@ -91,11 +91,11 @@
   </div>
 </div>
          
-       <?php }} ?>
         </div>
         <div class="col-md">
           <a href="javascript:void(0)" class="btn btn-success text-uppercase"  data-toggle="modal" data-target="#exampleModalCenter">Diagnosa pasien</a>
         </div>
+       <?php }} ?>
         </div>
         <!-- <form action="<?php echo base_url(). 'page/search'; ?>" method="post">
         <input type="search" name="keyword" class="form-control form-control-lg w-50" placeholder="Masukan nomor ktp.." required="">
