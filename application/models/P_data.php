@@ -8,9 +8,9 @@ class P_data extends CI_Model{
 		$aq = date('Y-m-d');
 		$this->db->select('*');
 		$this->db->from('tbl_pasiens');
+		$this->db->like('pasien_reg', $aq);
 		$this->db->where('pasien_status',1);
 		$this->db->or_where('pasien_status',2);
-		$this->db->like('pasien_reg',$aq);
 		return $this->db->get();
 	}
  

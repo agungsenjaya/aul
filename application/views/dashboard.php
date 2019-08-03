@@ -11,8 +11,32 @@
       <div class="media border border-success p-3">
       	<i class="fa fa-user-circle fa-4x mr-2 text-success"></i>
       	<div class="media-body">
-      		<h5 class="mb-0">Total Pasien</h5>
-      		<h2>120</h2>
+      		<h5 class="mb-0">Total Panggilan</h5>
+          <?php
+          $dat = date('Y-m-d'); 
+          $sql = "SELECT * FROM tbl_pasiens WHERE pasien_status=1 AND pasien_reg LIKE '$dat%' ";
+          $noa = $this->db->query($sql)->result();
+          function pass($noa){
+            $data = count($noa);
+            switch ($data) {
+              case 0:
+                echo "0";
+                break;
+                case $data:
+                if (strlen($data) >1) {
+                  echo $data;
+                }else{
+                  echo '0'.$data;
+                }
+                  break;
+              default:
+                break;
+            }
+          }
+          ?>  
+      		<h2>
+          <?php pass($noa); ?>
+          </h2>
       	</div>
       </div>
       </div>
@@ -20,8 +44,32 @@
       <div class="media border border-success p-3">
       	<i class="fa fa-list fa-4x mr-2 text-success"></i>
       	<div class="media-body">
-      		<h5 class="mb-0">Total Panggilan</h5>
-      		<h2>0</h2>
+      		<h5 class="mb-0">Total Obat</h5>
+          <?php
+          $dae = date('Y-m-d'); 
+          $rrq = "SELECT * FROM tbl_pasiens WHERE pasien_status=3 AND pasien_reg LIKE '$dae%' ";
+          $nia = $this->db->query($rrq)->result();
+          function piss($nia){
+            $dot = count($nia);
+            switch ($dot) {
+              case 0:
+                echo "0";
+                break;
+                case $dot:
+                if (strlen($dot) >1) {
+                  echo $dot;
+                }else{
+                  echo '0'.$dot;
+                }
+                  break;
+              default:
+                break;
+            }
+          }
+          ?>
+      		<h2>
+          <?php piss($nia) ?>  
+          </h2>
       	</div>
       </div>
       </div>
