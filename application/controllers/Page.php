@@ -198,7 +198,6 @@ function update_pasien(){
       }
     
   }
- 
   function dokter(){
     //Allowing akses to dokter only
     if($this->session->userdata('level')==='2'){
@@ -209,6 +208,73 @@ function update_pasien(){
     }else{
         echo "Access Denied";
     }
+  }
+  function pegawai_list(){
+    if($this->session->userdata('level')==='2'){
+      $this->load->view('layouts/header');
+      $this->load->view('layouts/sidebar');
+      $this->load->view('pegawai_list');
+      $this->load->view('layouts/footer');
+      }else{
+        echo "Access Denied";
+    }
+  }
+  function pegawai_update(){
+    if($this->session->userdata('level')==='2'){
+      $id = $this->input->post('user_id');
+      $nama = $this->input->post('user_name');
+      $alamat = $this->input->post('user_alamat');
+      $kelamin = $this->input->post('user_kelamin');
+      $password = $this->input->post('user_password');
+      $data = array(
+        'user_name' => $nama,
+        'user_password' => md5($password),
+        'user_alamat' => $alamat,
+        'user_kelamin' => $kelamin,
+      );
+
+      $where = array(
+        'user_id' => $id
+      );
+
+      $this->p_data->update_proses($where,$data,'tbl_users');
+      redirect('page/pegawai_list');
+      }else{
+        echo "Access Denied";
+    }
+  }
+  function pegawai_tambah(){
+      $koda = $this->input->post('user_ktp');
+     if($this->session->userdata('level')==='2'){
+      $sql = $this->db->query("SELECT * FROM tbl_users WHERE user_ktp='$koda'");
+      $count = $sql->num_rows();
+      if ($count > 0) {
+        echo "sudah ada";
+      }else{
+        $nama = $this->input->post('user_name');
+        $alamat = $this->input->post('user_alamat');
+        $kelamin = $this->input->post('user_kelamin');
+        $password = $this->input->post('user_password');
+        $level = 1;
+        $reg = date('Y-m-d H:i:s');
+        $ktp = $this->input->post('user_ktp');
+        $data = array(
+          'user_name' => $nama,
+          'user_alamat' => $alamat,
+          'user_kelamin' => $kelamin,
+          'user_ktp' => $ktp,
+          'user_password' => md5($password),
+          'user_level' => $level,
+          'user_reg' => $reg
+          );
+        $this->p_data->input_pegawai($data,'tbl_users');
+        redirect('page/pegawai_list');
+      }
+
+        }else{
+          echo "Access Denied";
+      }
+
   }
   public function search(){
     if($this->session->userdata('level')==='2'){

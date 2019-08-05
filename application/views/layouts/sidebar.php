@@ -35,7 +35,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url(); ?>page/dokter">
+            <a class="nav-link" href="<?php echo base_url(); ?>page/pegawai_list">
               <i class="fa fa-users mr-1"></i>
               Pegawai <span class="sr-only">(current)</span>
             </a>
@@ -53,7 +53,7 @@
         </h6>
         <ul class="nav flex-column mb-2">
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="javascript:void(0)">
               <i class="fa fa-file-pdf-o mr-1"></i>
               Download laporan
             </a>

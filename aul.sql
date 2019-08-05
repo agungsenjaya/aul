@@ -2,10 +2,10 @@
 -- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Aug 03, 2019 at 08:57 AM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 5.6.38
+-- Host: localhost:3306
+-- Waktu pembuatan: 05 Agu 2019 pada 08.09
+-- Versi server: 5.7.19
+-- Versi PHP: 7.1.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_konsultans`
+-- Struktur dari tabel `tbl_konsultans`
 --
 
 CREATE TABLE `tbl_konsultans` (
@@ -37,7 +37,7 @@ CREATE TABLE `tbl_konsultans` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_konsultans`
+-- Dumping data untuk tabel `tbl_konsultans`
 --
 
 INSERT INTO `tbl_konsultans` (`konsultan_id`, `konsultan_judul`, `konsultan_obat`, `konsultan_tgl`, `pasien_id`) VALUES
@@ -52,7 +52,7 @@ INSERT INTO `tbl_konsultans` (`konsultan_id`, `konsultan_judul`, `konsultan_obat
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_pasiens`
+-- Struktur dari tabel `tbl_pasiens`
 --
 
 CREATE TABLE `tbl_pasiens` (
@@ -66,7 +66,7 @@ CREATE TABLE `tbl_pasiens` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_pasiens`
+-- Dumping data untuk tabel `tbl_pasiens`
 --
 
 INSERT INTO `tbl_pasiens` (`pasien_id`, `pasien_nama`, `pasien_alamat`, `pasien_kelamin`, `pasien_ktp`, `pasien_status`, `pasien_reg`) VALUES
@@ -83,69 +83,72 @@ INSERT INTO `tbl_pasiens` (`pasien_id`, `pasien_nama`, `pasien_alamat`, `pasien_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_users`
+-- Struktur dari tabel `tbl_users`
 --
 
 CREATE TABLE `tbl_users` (
   `user_id` int(100) NOT NULL,
   `user_name` varchar(100) NOT NULL,
-  `user_email` varchar(100) NOT NULL,
   `user_password` varchar(100) NOT NULL,
-  `user_level` varchar(20) NOT NULL
+  `user_level` varchar(20) NOT NULL,
+  `user_kelamin` varchar(100) NOT NULL,
+  `user_reg` varchar(100) NOT NULL,
+  `user_ktp` varchar(100) NOT NULL,
+  `user_alamat` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_users`
+-- Dumping data untuk tabel `tbl_users`
 --
 
-INSERT INTO `tbl_users` (`user_id`, `user_name`, `user_email`, `user_password`, `user_level`) VALUES
-(1, 'agung', 'agung@gmail.com', '6f5d0ad4bc971cddc51a0c5f74bdf3fd', '1'),
-(2, 'rara', 'rara@gmail.com', '5ab83fa52e5d0f5abc44d2eed4479ff0', '2'),
-(3, 'suci', 'suci@gmail.com', 'a7918ffddbdda39e5c6307dd51c94d65', '3');
+INSERT INTO `tbl_users` (`user_id`, `user_name`, `user_password`, `user_level`, `user_kelamin`, `user_reg`, `user_ktp`, `user_alamat`) VALUES
+(2, 'rara', '5ab83fa52e5d0f5abc44d2eed4479ff0', '2', '', '', '0', ''),
+(4, 'rika medika', '2f6b87bf490402877f19ee52998f2fa6', '1', 'P', '2019-08-05 14:31:44', '123456', 'jl raya tubagus ismail raya'),
+(5, 'agung senjaya', '6f5d0ad4bc971cddc51a0c5f74bdf3fd', '1', 'L', '2019-08-05 14:36:16', '321202213212', 'jl raya masjid timur');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `tbl_konsultans`
+-- Indeks untuk tabel `tbl_konsultans`
 --
 ALTER TABLE `tbl_konsultans`
   ADD PRIMARY KEY (`konsultan_id`);
 
 --
--- Indexes for table `tbl_pasiens`
+-- Indeks untuk tabel `tbl_pasiens`
 --
 ALTER TABLE `tbl_pasiens`
   ADD PRIMARY KEY (`pasien_id`);
 
 --
--- Indexes for table `tbl_users`
+-- Indeks untuk tabel `tbl_users`
 --
 ALTER TABLE `tbl_users`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `tbl_konsultans`
+-- AUTO_INCREMENT untuk tabel `tbl_konsultans`
 --
 ALTER TABLE `tbl_konsultans`
   MODIFY `konsultan_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `tbl_pasiens`
+-- AUTO_INCREMENT untuk tabel `tbl_pasiens`
 --
 ALTER TABLE `tbl_pasiens`
   MODIFY `pasien_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `tbl_users`
+-- AUTO_INCREMENT untuk tabel `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

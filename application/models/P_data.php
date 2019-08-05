@@ -17,6 +17,9 @@ class P_data extends CI_Model{
 	function input_data($data,$table){
 		$this->db->insert($table,$data);
 	}
+	function input_pegawai($data,$table){
+		$this->db->insert($table,$data);
+	}
 	function tambah_diagnosa($data,$table){
 		$this->db->insert($table,$data);
 	}
