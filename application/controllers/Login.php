@@ -6,6 +6,14 @@ class Login extends CI_Controller{
   }
  
   function index(){
+   
+    if($this->session->userdata('logged_in') == TRUE){
+      if($this->session->userdata('level')==='1'){
+      redirect('page');
+        }else{
+      redirect('page/dokter');
+      }
+    }
     $this->load->view('login_view');
   }
  
