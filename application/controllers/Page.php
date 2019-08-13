@@ -70,6 +70,35 @@ class Page extends CI_Controller{
       echo "Access Denied";
     }
   }
+  function pasien_rc(){
+    if($this->session->userdata('level')==='1'){
+
+    $pasien_status = 0;
+    $id = $this->input->post('pasien_id');
+    $reg = date('Y-m-d H:i:s');
+    $data = array(
+      'pasien_status' => $pasien_status,
+      'pasien_reg' => $reg
+    );
+    $where = array(
+        'pasien_id' => $id
+      );
+    $this->p_data->update_cc($where,$data,'tbl_pasiens');
+    redirect('page/pasien_list');
+
+      }else{
+      echo "Access Denied";
+    }
+  }
+  function pasien_clear(){
+    if($this->session->userdata('level')==='1'){
+      $sql = "UPDATE tbl_pasiens SET pasien_status=0";
+      $jqr = $this->db->query($sql);
+      redirect('page/pasien_list');
+    }else{
+     echo "Access Denied"; 
+    }
+  }
   function pasien_finish(){
     if($this->session->userdata('level')==='1'){
 
@@ -252,6 +281,7 @@ function update_pasien(){
         echo "sudah ada";
       }else{
         $nama = $this->input->post('user_name');
+        $akses = $this->input->post('user_akses');
         $alamat = $this->input->post('user_alamat');
         $kelamin = $this->input->post('user_kelamin');
         $password = $this->input->post('user_password');
@@ -260,6 +290,7 @@ function update_pasien(){
         $ktp = $this->input->post('user_ktp');
         $data = array(
           'user_name' => $nama,
+          'user_akses' => $akses,
           'user_alamat' => $alamat,
           'user_kelamin' => $kelamin,
           'user_ktp' => $ktp,

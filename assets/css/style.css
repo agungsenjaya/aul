@@ -27,3 +27,8 @@ h1,h2,h3,h4,h5 {
 .bg-gradient-green {
     background: linear-gradient(0deg,#80ff9d 35%,#dbffe3 100%);
 }
+.shadow1 {
+     -moz-box-shadow:    inset 0 0 10px #000000;
+   -webkit-box-shadow: inset 0 0 10px #000000;
+   box-shadow:         inset 0 0 10px #000000;
+}

@@ -13,12 +13,12 @@
       	<a href="javascript:void(0)" class="btn btn-success text-uppercase" title="" data-toggle="modal" data-target="#modalCreate"><i class="fa fa-users mr-2"></i>Tambah Pegawai</a>
       </div>
       <table class="table table-bordered">	
-      	<thead class="thead-light">
+      	<thead class="bg-success text-white">
       		<tr>
       			<th>#</th>
       			<th>Nama Lengkap</th>
       			<th>Jenis Kelamin</th>
-      			<th><span class="text-danger">*</span> No Identitas / KTP</th>
+      			<th><span class="text-white">*</span> Nomor Nik</th>
       			<th>Tanggal Masuk</th>
       			<th>Edit Pegawai</th>
       		</tr>
@@ -49,7 +49,7 @@
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title ml-auto" id="exampleModalCenterTitle">Tambah Pegawai</h5>
+                    <h5 class="modal-title ml-auto" id="exampleModalCenterTitle">Edit Pegawai</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -60,10 +60,10 @@
                         <div class="form-group col-md-6">
                           <label for="inputNama">Nama Lengkap</label>
                           <input type="hidden" value="<?php echo $peg->user_id ?>" name="user_id">
-                          <input required type="text" name="user_name" class="form-control" id="inputNama" placeholder="Masukan Nama" value="<?php echo $peg->user_name ?>">
+                          <input required type="text" name="user_name" class="form-control" id="editNama" placeholder="Masukan Nama" value="<?php echo $peg->user_name ?>">
                         </div>
                         <div class="form-group col-md-6">
-                          <label for="inputKtp">Nomor KTP</label>
+                          <label for="inputKtp">Nomor Nik</label>
                           <input required type="text" class="form-control" name="user_ktp" id="inputKtp" placeholder="Masukan Nomor" disabled value="<?php echo $peg->user_ktp ?>">
                         </div>
                       </div>
@@ -111,9 +111,10 @@
             <div class="form-group col-md-6">
               <label for="inputNama">Nama Lengkap</label>
               <input required type="text" name="user_name" class="form-control" id="inputNama" placeholder="Masukan Nama">
+              <input type="hidden" name="user_akses" id="hui">
             </div>
             <div class="form-group col-md-6">
-              <label for="inputKtp">Nomor KTP</label>
+              <label for="inputKtp">Nomor Nik</label>
               <input required type="text" class="form-control" name="user_ktp" id="inputKtp" placeholder="Masukan Nomor">
             </div>
           </div>

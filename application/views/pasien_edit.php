@@ -12,7 +12,7 @@
       <!-- Content -->
       <div class="row">
       <div class="col-md-4">
-        <div class="media border border-success p-4">
+        <div class="media border border-success p-4 rounded">
           <i class="fa fa-user-circle fa-4x mr-2 text-success"></i>
           <div class="media-body">
             <?php foreach ($pasien as $keya) { ?>
@@ -21,6 +21,10 @@
             <?php if ($keya->pasien_status == 1): ?>
               <div class="badge badge-success">
                 Active
+              </div>
+              <?php elseif ($keya->pasien_status == 2): ?>
+                <div class="badge badge-warning">
+                Prosess
               </div>
               <?php else: ?>
               <div class="badge badge-dark">
@@ -35,6 +39,8 @@
         <?php foreach ($pasien as $keya) { ?>
         <?php if ($keya->pasien_status == 1): ?>
           <button type="" disabled class="btn btn-dark text-uppercase">panggil pasien</button>
+          <?php elseif ($keya->pasien_status == 2): ?>
+            <button type="" disabled class="btn btn-dark text-uppercase">panggil pasien</button>
           <?php else: ?>
             <form action="<?php echo base_url(). 'page/update_pasien'; ?>" method="post">
               <input type="hidden" name="pasien_id" value="<?php echo $keya->pasien_id ?>">
@@ -58,7 +64,7 @@
       <input required type="text" name="pasien_nama" class="form-control" id="inputNama" placeholder="Masukan Nama" value="<?php echo $key->pasien_nama; ?>">
     </div>
     <div class="form-group col-md-6">
-      <label for="inputKtp">Nomor KTP</label>
+      <label for="inputKtp">Nomor Nik</label>
       <input required type="text" class="form-control" name="pasien_ktp" id="inputKtp" placeholder="Masukan Nomor" value="<?php echo $key->pasien_ktp; ?>">
     </div>
   </div>
@@ -66,7 +72,7 @@
     <label for="inputKelamin">Jenis Kelamin</label>
     <input class="una" type="hidden" value="<?php echo $key->pasien_kelamin; ?>">
     <select required name="pasien_kelamin" id="mo" class="form-control">
-      <option value="">Pilih Kelamin</option>
+      <option value="">Pilih Jenis Kelamin</option>
       <option value="L">Laki - Laki</option>
       <option value="P">Perempuan</option>
     </select>
@@ -86,7 +92,7 @@
         <h1 class="h5">Record Pasien</h1>
         <hr>
         <table class="table table-bordered">
-          <thead class="thead-light">
+          <thead class="bg-success text-white">
             <tr>
               <th>Tanggal</th>
               <th>Penyakit</th>

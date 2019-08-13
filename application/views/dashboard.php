@@ -2,14 +2,16 @@
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h5">Dashboard <?php if($this->session->userdata('level')==='1'):?>Pegawai<?php elseif($this->session->userdata('level')==='2'):?>Dokter<?php else:?>
           <?php endif;?></h1>
-        <span class="text-capitalize">Selamat Datang , <?php if($this->session->userdata('level')==='1'):?><?php elseif($this->session->userdata('level')==='2'):?>Dr.<?php else:?>
+          <div class="border px-3 py-2 border-success rounded text-success">
+          <span class="text-capitalize">Selamat Datang , <?php if($this->session->userdata('level')==='1'):?><?php elseif($this->session->userdata('level')==='2'):?>Dr.<?php else:?>
           <?php endif;?> <?php echo $this->session->userdata('username');?></span>
+          </div>
       </div>
       <!-- Content -->
       <div class="row">
       <div class="col-md-4">
-      <div class="media border border-success p-3">
-      	<i class="fa fa-user-circle fa-4x mr-2 text-success"></i>
+      <div class="media bg-success text-white p-3 rounded">
+      	<i class="fa fa-user-circle fa-4x mr-2"></i>
       	<div class="media-body">
       		<h5 class="mb-0">Total Panggilan</h5>
           <?php
@@ -41,8 +43,8 @@
       </div>
       </div>
       <div class="col-md-4">
-      <div class="media border border-success p-3">
-      	<i class="fa fa-list fa-4x mr-2 text-success"></i>
+      <div class="media bg-success text-white p-3 rounded">
+      	<i class="fa fa-list fa-4x mr-2"></i>
       	<div class="media-body">
       		<h5 class="mb-0">Total Obat</h5>
           <?php
@@ -89,7 +91,7 @@
           foreach ($query->result() as $keya) {
          ?>
 
-         <div class="media border border-success p-4">
+         <div class="media border rounded border-success p-4">
           <i class="fa fa-user-circle fa-4x mr-2 text-success"></i>
           <div class="media-body">
             
@@ -156,7 +158,7 @@
         <h1 class="h5">Record History</h1>
         <hr>
         <table class="table table-bordered">
-          <thead class="thead-light">
+          <thead class="bg-success text-white">
             <tr>
               <th>#</th>
               <th>Tanggal</th>

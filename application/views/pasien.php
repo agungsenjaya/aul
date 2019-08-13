@@ -22,7 +22,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
         <div class="input-group asearch">
-            <input type="text" id="search1" class="form-control form-control-lg rounded-0" placeholder="Cari nama pasien / ktp.." aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <input type="text" id="search1" class="form-control form-control-lg rounded-0" placeholder="Cari nama pasien / nomor nik.." aria-label="Recipient's username" aria-describedby="basic-addon2">
             <div class="input-group-append">
               <span class="input-group-text rounded-0" id="basic-addon2"><i class="fa fa-sort grs"></i></span>
             </div>
@@ -36,12 +36,12 @@
         </div>
       </div>
             <table class="table table-bordered">
-                <thead class="thead-light">
+                <thead class="bg-success text-white">
                     <tr>
                         <th>#</th>
                         <th>Nama</th>
-                        <th>Nomor Ktp</th>
-                        <th>Kelamin</th>
+                        <th>Nomor Nik</th>
+                        <th>Jenis Kelamin</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -71,7 +71,9 @@
                       <span class="badge badge-dark">Deactive</span>
                       <?php endif ?>
                     </td>
-                    <td><a href="<?php echo base_url();?>page/edit/<?php echo $data->pasien_id ?>" class="btn btn-success">Action</a></td>
+                    <td>
+                      <a href="<?php echo base_url();?>page/edit/<?php echo $data->pasien_id ?>" class="btn btn-success">Action</a>
+                    </td>
                   </tr>
                   <?php }?>
                 </tbody>
@@ -96,14 +98,14 @@
               <input required type="text" name="pasien_nama" class="form-control" id="inputNama" placeholder="Masukan Nama">
             </div>
             <div class="form-group col-md-6">
-              <label for="inputKtp">Nomor KTP</label>
+              <label for="inputKtp">Nomor Nik</label>
               <input required type="text" class="form-control" name="pasien_ktp" id="inputKtp" placeholder="Masukan Nomor">
             </div>
           </div>
           <div class="form-group">
             <label for="inputKelamin">Jenis Kelamin</label>
             <select required name="pasien_kelamin" id="" class="form-control">
-              <option value="">Pilih Kelamin</option>
+              <option value="">Pilih Jenis Kelamin</option>
               <option value="L">Laki - Laki</option>
               <option value="P">Perempuan</option>
             </select>

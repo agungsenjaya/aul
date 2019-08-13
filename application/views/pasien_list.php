@@ -1,6 +1,26 @@
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h5">List Panggilan / <span class="text-success"><?php echo date('d-m-Y') ?></span></h1>
+        <h1 class="h5">List Panggilan / <span class="text-success"><?php echo date('d-m-Y') ?></span>
+          <a href="javascript:void(0)" class="btn btn-success ml-3" title="" data-toggle="modal" data-target="#modalClear"><i class="fa fa-refresh mr-2"></i>CLEAR PANGGILAN</a>
+        </h1>
+        <!-- Modal Clear -->
+        <div class="modal fade" id="modalClear" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content border-0">
+              <div class="modal-body">
+                <button type="button" class="close ml-2" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <p class="lead"><i class="fa fa-info-circle mr-2 text-success"></i>Apakah anda yakin akan melakukan clearing list pasien & obat.</p>
+                <hr>
+                <form action="<?php echo base_url(); ?>page/pasien_clear" method="POST">
+                  <button type="submit" class="btn btn-lg btn-success text-uppercase">Ya, Saya Yakin</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Modal Clear -->
         <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?php echo base_url() ?>page">Home</a></li>
@@ -9,11 +29,11 @@
         </nav>
       </div>
       <table class="table table-bordered">
-      	<thead class="thead-light">
+      	<thead class="bg-success text-white">
       		<tr>
       			<th>#</th>
       			<th>Nama</th>
-      			<th>Nomor Ktp</th>
+      			<th>Nomor Nik</th>
       			<th>Panggilan</th>
       			<th>Status</th>
       		</tr>
@@ -28,10 +48,20 @@
       			<td class="bg-light"><?php echo $key->pasien_ktp ?></td>
             <td>
               <?php if ($key->pasien_status == 1): ?>
-                <form action="<?php echo base_url(). 'page/pasien_proses'; ?>" method="post">
-              <input type="hidden" name="pasien_id" value="<?php echo $key->pasien_id ?>">
-                <button type="submit" class="btn btn-success">Proses</button>
-              </form>
+                <div class="d-flex">
+                  <div class="mr-2">
+                  <form action="<?php echo base_url(). 'page/pasien_proses'; ?>" method="post">
+                  <input type="hidden" name="pasien_id" value="<?php echo $key->pasien_id ?>">
+                    <button type="submit" class="btn btn-success">Proses</button>
+                  </form>
+                  </div>
+                  <div>
+                    <form action="<?php echo base_url(); ?>page/pasien_rc" method="POST">
+                      <input type="hidden" name="pasien_id" value="<?php echo $key->pasien_id; ?>">
+                        <button type="submit" title="" class="btn btn-danger">Hapus</button>
+                    </form>
+                  </div>
+                </div>
                 <?php else: ?>
                   <button type="button" disabled class="btn btn-dark">Proses</button>
               <?php endif ?>
@@ -51,11 +81,11 @@
         <h1 class="h5">Pasien Obat</h1>
         <hr>
         <table class="table table-bordered">
-          <thead class="thead-light">
+          <thead class="bg-success text-white">
             <tr>
               <th>#</th>
               <th>Nama</th>
-              <th>Nomor Ktp</th>
+              <th>Nomor Nik</th>
               <th>Actions</th>
               <th>Status</th>
             </tr>

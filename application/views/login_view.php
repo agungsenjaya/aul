@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SIK | Login Area</title>
+    <link rel="icon" href="<?php echo base_url(); ?>assets/logo-plus.png">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/app.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/login.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
@@ -13,10 +14,16 @@
     
 </head>
 <body>
+  <!-- <?php 
+    $jk = "Agung Senjaya";
+    $names = print_r (explode(" ", $jk,1));
+    echo $names[2];
+
+   ?> -->
 <form class="form-signin" action="<?php echo site_url('login/auth');?>" method="post">
   <div class="text-center mb-4">
     <div class="mb-3">
-        <h5 class="font-bold text-uppercase"><i class="fa border border-success fa-plus text-success p-2 bg-white  mr-2"></i>Klinik PT Glostar Indonesia</h5>
+        <h5 class="font-bold text-uppercase"><img src="<?php echo base_url(); ?>assets/logo-plus.png" width="30" class="mr-2" alt="">Klinik PT Glostar Indonesia</h5>
     </div>
     <hr>
     <p>Selamat datang di halaman login akses <br> <b>Dashboard</b> klinik kesehatan.</p>

@@ -1,6 +1,10 @@
-<nav class="col-md-2 d-none d-md-block bg-gradient-green sidebar">
+<nav class="col-md-2 d-none d-md-block bg-gradient-green sidebar shadow1">
       <div class="sidebar-sticky">
-        
+        <div class="text-center">
+          <img src="<?php echo base_url(); ?>assets/logo-plus.png" width="30%" alt="">
+          <p class="font-weight-bold mt-3">Klinik PT Glostar Indonesia</p>
+          <hr class="mx-3">
+        </div>
         <h6 class="sidebar-heading font-bold d-flex justify-content-between align-items-center px-3 mt-4 mb-3 text-muted">
           <span>Menu Utama</span>
           <a class="d-flex align-items-center text-muted" href="#">

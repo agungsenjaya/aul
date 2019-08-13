@@ -85,6 +85,17 @@
         });
     });
 });
+     // Apply Akses
+    $("#inputNama").keyup(function(){  
+        var ass = $(this).val();
+        var iss = ass.split(" ").length - 1;
+        var uss = ass.split(' ').slice(0,-iss).join(' ');
+        if(iss >= 1){
+          $('#hui').val(uss);
+        }else{
+          $('#hui').val(ass);
+        }
+    });  
 </script>
 </body>
 </html>

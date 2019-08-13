@@ -33,6 +33,10 @@ class P_data extends CI_Model{
 		$this->db->where($where);
 		$this->db->update($table,$data);
 	}
+	function update_cc($where,$data,$table){
+		$this->db->where($where);
+		$this->db->update($table,$data);
+	}
 	function update_status($where,$data,$table){
 		$this->db->where($where);
 		$this->db->update($table,$data);
